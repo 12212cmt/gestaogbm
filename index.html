@@ -3,268 +3,172 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CRM Bombeiros - Gestão Operacional</title>
+  <title>CBMSC - Palma Sola | Gestão BM</title>
   <style>
     :root {
       --verde: #43A047;
-      --cinza-fundo: #cac8c8;
-      --branco: #ffffff;
-      --texto: #222222;
-      --borda: #d0d0d0;
+      --dourado: rgb(218, 69, 32);
+      --fundo: #f2f2f2;
+      --sombra: rgba(0, 0, 0, 0.25);
     }
 
-    * {
+    body {
       margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+      background-color: var(--fundo);
+      color: #333;
     }
 
-    html, body {
-  height: 100%;
-  font-family: "Segoe UI", Tahoma, sans-serif;
-  background-color: var(--cinza-fundo);
-  color: var(--texto);
-  overflow-x: hidden; /* Removido o hidden geral */
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  background-color: var(--branco);
-  min-height: 100vh; /* Alterado de height para min-height */
-  display: flex;
-  flex-direction: column;
-}
-
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 10px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
     header {
       background-color: var(--verde);
-      color: #ffffff;
-      padding: 20px 10px 10px;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
+      box-shadow: 0 4px 12px var(--sombra);
       position: sticky;
       top: 0;
-      z-index: 1000;
-      flex-shrink: 0;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 999;
     }
 
-    header h1 {
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 5px;
+    header::before {
+      content: "";
+      display: block;
+      height: 6px;
+      background-color: var(--dourado);
     }
 
-    header p {
-      font-size: 14px;
-      opacity: 0.95;
-      margin-bottom: 10px;
-    }
-
-    nav {
+    .header-content {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 8px;
-      margin-bottom: 5px;
+      align-items: center;
+      padding: 12px 20px;
     }
 
-    .menu {
-      flex: 1 1 auto;
-      min-width: 140px;
-      position: relative;
-    }
-
-    .menu > a {
-      display: block;
-      width: 100%;
-      background-color: #ffffff;
-      color: var(--verde);
-      text-decoration: none;
-      padding: 10px 14px;
-      border-radius: 5px;
-      font-size: 14px;
-      font-weight: 500;
-      transition: background-color 0.3s, color 0.3s;
+    .logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px var(--sombra);
       cursor: pointer;
-      text-align: center;
+      transition: transform 0.2s;
     }
 
-    .menu > a:hover {
-      background-color: #e0f2f1;
-      color: #2e7d32;
+    .logo:hover {
+      transform: scale(1.05);
     }
 
-    .submenu {
-      opacity: 0;
-      visibility: hidden;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background-color: #ffffff;
-      border: 1px solid var(--borda);
-      border-radius: 5px;
-      z-index: 1001;
-      min-width: 180px;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-      pointer-events: none;
-    }
-
-    .submenu a {
-      display: block;
-      padding: 8px 12px;
-      color: var(--verde);
-      text-decoration: none;
-      font-size: 14px;
-      cursor: pointer;
-    }
-
-    .submenu a:hover {
-      background-color: #e0f2f1;
-      color: #2e7d32;
-    }
-
-    .menu:hover .submenu,
-    .menu .submenu:hover {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-    }
-
-    main {
-      flex-grow: 1;
-      padding: 0;
-      overflow: hidden;
+    .titulo {
+      margin-left: 15px;
+      color: white;
       display: flex;
       flex-direction: column;
+      line-height: 1.2;
     }
 
-    iframe {
-      width: 100%;
-      flex-grow: 1;
-      border: none;
-      display: block;
+    .titulo h1 {
+      font-size: 22px;
+      margin: 0;
+      font-weight: bold;
     }
 
-    .info-linha {
-      text-align: center;
-      font-size: 13px;
-      color: #555;
-      padding: 8px 0;
-      border-top: 1px solid var(--borda);
-      background-color: #f9f9f9;
+    .titulo span {
+      font-size: 14px;
+      opacity: 0.9;
     }
 
-    footer {
-      text-align: center;
-      font-size: 12px;
-      color: #777;
-      padding: 15px 10px;
-      background: var(--cinza-fundo);
-      border-top: 1px solid var(--borda);
-    }
-
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 20px;
-      }
-
-      header p {
-        font-size: 13px;
-      }
-
-      nav {
-        flex-direction: column;
-        gap: 5px;
-      }
-
-      .menu > a {
-        font-size: 13px;
-        padding: 6px 12px;
-      }
-
-      .submenu {
-        position: relative;
-        top: 0;
-        left: 0;
-        border: none;
-        box-shadow: none;
-      }
-
-      .submenu a {
-        font-size: 13px;
-        padding: 6px 12px;
-      }
-
-      .info-linha {
-        font-size: 12px;
-        padding: 6px;
-      }
-
-      footer {
-        font-size: 11px;
+    /* Cabeçalho adaptável */
+    @media (max-width: 600px) {
+      .header-content {
+        justify-content: center;
         padding: 10px;
       }
 
-      iframe {
-        height: calc(100vh - 250px);
+      .logo {
+        display: none;
       }
+
+      .titulo {
+        margin-left: 0;
+        text-align: center;
+      }
+
+      .titulo h1 {
+        font-size: 18px;
+      }
+
+      .titulo span {
+        font-size: 12px;
+      }
+    }
+
+main {
+  flex-grow: 1;              /* Ocupar o espaço restante entre cabeçalho e rodapé */
+  display: flex;             /* Ativa layout flexível na direção vertical */
+  flex-direction: column;    /* Organiza os elementos internos em coluna (vertical) */
+}
+
+iframe {
+  flex-grow: 1;              /* Faz o iframe ocupar todo o espaço disponível do main */
+  border: none;              /* Remove bordas padrão do navegador */
+  width: 100%;               /* Ocupa toda a largura possível */
+}
+
+
+    footer {
+      margin-top: 20px;
+      background-color: #eee;
+      text-align: center;
+      padding: 15px 10px;
+      font-size: 13px;
+      color: #555;
+      border-top: 1px solid #ccc;
+      border-radius: 6px 6px 0 0;
     }
   </style>
 
   <script>
     function carregarAppSheet(view = '') {
       const iframe = document.getElementById('appsheet-frame');
-      const baseURL = 'https://www.appsheet.com/start/442e3e0a-0cdd-4c3f-8e4c-be8070d5d141';
-      iframe.src = view ? `${baseURL}#view=${view}` : baseURL;
+      const base = 'https://www.appsheet.com/start/442e3e0a-0cdd-4c3f-8e4c-be8070d5d141';
+      iframe.src = view ? `${base}#view=${view}` : base;
     }
 
-    function carregarAppSheetLog(view = '') {
-      const iframe = document.getElementById('appsheet-frame');
-      const baseURL = 'https://www.appsheet.com/start/b8068f50-015e-43ae-9393-2cdd8e85504f';
-      iframe.src = view ? `${baseURL}#view=${view}` : baseURL;
-    }
-
-    window.onload = function() {
-      carregarAppSheet();
-    };
+    window.onload = carregarAppSheet;
   </script>
 </head>
 <body>
 
   <div class="container">
-<header>
-  <h1>Sistema de Gestão Operacional</h1>
-  <p>Corpo de Bombeiros Militar - Plataforma Interna</p>
-  <nav>
-    <div class="menu"><a onclick="carregarAppSheet()">Início</a></div>
+    <header>
+      <div class="header-content">
+        <img
+          src="https://tse4.mm.bing.net/th/id/OIP.Rp3y-BbQkb6zGczSSYhfXAHaHa?rs=1&pid=ImgDetMain&o=7&rm=3"
+          alt="Logo CBM"
+          class="logo"
+          onclick="carregarAppSheet()" />
 
-    <div class="menu"><a onclick="carregarAppSheet('SubmenuVtr')">Viaturas</a></div>
-    <div class="menu"><a onclick="carregarAppSheet('PSubmenuPat')">Patrimônio</a></div>
-    <div class="menu"><a onclick="carregarAppSheet('SubmenuCadEfet')">Efetivo BM</a></div>
-    <div class="menu"><a onclick="carregarAppSheet('CautelaMateriais')">Cautela Materiais</a></div>
-    <div class="menu"><a onclick="carregarAppSheet('ControleGastos')">Controle Gastos</a></div>
-    <div class="menu"><a onclick="carregarAppSheet('Noticias')">Notícias</a></div>
-    <div class="menu"><a onclick="carregarAppSheet('DiarioCmdo')">Diário Cmt</a></div>
-  </nav>
-</header>
+        <div class="titulo">
+          <h1>CBMSC</h1>
+          <span>Palma Sola - Gestão BM</span>
+        </div>
+      </div>
+    </header>
 
     <main>
       <iframe id="appsheet-frame"></iframe>
-      <div class="info-linha">
-        © 2025 - Corpo de Bombeiros | Sistema desenvolvido para uso institucional restrito
-      </div>
     </main>
-  </div>
 
-  <footer>
-    Desenvolvido para uso institucional restrito
-  </footer>
+    <footer>
+      © 2025 - Corpo de Bombeiros Militar de Santa Catarina - Palma Sola<br>
+      Sistema desenvolvido para uso institucional restrito.
+      <!-- Espaço para personalizações -->
+    </footer>
+  </div>
 
 </body>
 </html>
