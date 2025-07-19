@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CRM Bombeiros - Gestão Operacional</title>
+  <style>
+    :root {
+      --verde: #43A047;
+      --cinza-fundo: #cac8c8;
+      --branco: #ffffff;
+      --texto: #222222;
+      --borda: #d0d0d0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background-color: var(--cinza-fundo);
+      color: var(--texto);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 30px auto 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      background-color: var(--branco);
+    }
+
+    header {
+      background-color: var(--verde);
+      color: #ffffff;
+      padding: 20px 10px 10px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    header h1 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      font-size: 14px;
+      opacity: 0.95;
+      margin-bottom: 10px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .menu {
+      position: relative;
+    }
+
+    .menu > a {
+      background-color: #ffffff;
+      color: var(--verde);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background-color 0.3s, color 0.3s;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .menu > a:hover {
+      background-color: #e0f2f1;
+      color: #2e7d32;
+    }
+
+    .submenu {
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      top: 36px;
+      left: 0;
+      background-color: #ffffff;
+      border: 1px solid var(--borda);
+      border-radius: 5px;
+      z-index: 10;
+      min-width: 180px;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      pointer-events: none;
+    }
+
+    .submenu a {
+      display: block;
+      padding: 8px 12px;
+      color: var(--verde);
+      text-decoration: none;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .submenu a:hover {
+      background-color: #e0f2f1;
+      color: #2e7d32;
+    }
+
+    .menu:hover .submenu,
+    .menu .submenu:hover {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    main {
+      padding: 10px 0;
+    }
+
+    iframe {
+      width: 100%;
+      height: 720px;
+      border: none;
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: #777;
+      padding: 25px 10px;
+    }
+  </style>
+
+<script>
+  function carregarAppSheet(view = '') {
+    const iframe = document.getElementById('appsheet-frame');
+    const baseURL = 'https://www.appsheet.com/start/442e3e0a-0cdd-4c3f-8e4c-be8070d5d141';
+    iframe.src = view ? `${baseURL}#view=${view}` : baseURL;
+  }
+
+  function carregarAppSheetLog(view = '') {
+    const iframe = document.getElementById('appsheet-frame');
+    const baseURL = 'https://www.appsheet.com/start/b8068f50-015e-43ae-9393-2cdd8e85504f';
+    iframe.src = view ? `${baseURL}#view=${view}` : baseURL;
+  }
+</script>
+
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Sistema de Gestão Operacional</h1>
+      <p>Corpo de Bombeiros Militar - Plataforma Interna</p>
+      <nav>
+        <div class="menu">
+          <a>Viaturas</a>
+          <div class="submenu">
+            <a onclick="carregarAppSheet('Viaturas')">Tabela Viaturas</a>
+            <a onclick="carregarAppSheet('AlteracoesVtr')">Alterações VTR</a>
+          </div>
+        </div>
+
+        <div class="menu">
+          <a>Patrimônio</a>
+          <div class="submenu">
+            <a onclick="carregarAppSheet('PesquisaPatrimonio')">Pesquisa Patrimônio</a>
+          </div>
+        </div>
+
+        <div class="menu">
+          <a onclick="carregarAppSheet('EfetivoBM')">Efetivo BM</a>
+        </div>
+
+        <div class="menu">
+          <a onclick="carregarAppSheet('CautelaMateriais')">Cautela Materiais</a>
+        </div>
+
+        <div class="menu">
+          <a onclick="carregarAppSheet('ControleGastos')">Controle Gastos</a>
+        </div>
+
+        <div class="menu">
+          <a onclick="carregarAppSheet('Noticias')">Notícias</a>
+        </div>
+        
+
+        <div class="menu">
+          <a onclick="carregarAppSheet('DiarioCmdo')">Diário Cmt</a>
+        </div>
+
+<div class="menu">
+  <a href="https://www.appsheet.com/start/b8068f50-015e-43ae-9393-2cdd8e85504f" target="_blank">Gestão Logística</a>
+  <div class="submenu">
+    <a href="https://www.appsheet.com/start/b8068f50-015e-43ae-9393-2cdd8e85504f#view=Dashboard" target="_blank">Dashboard</a>
+  </div>
+</div>
+
+
+      </nav>
+    </header>
+
+    <main>
+      <iframe id="appsheet-frame"></iframe>
+    </main>
+  </div>
+
+  <footer>
+    © 2025 - Corpo de Bombeiros | Sistema desenvolvido para uso institucional restrito
+  </footer>
+
+</body>
+</html>
