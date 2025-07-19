@@ -150,6 +150,10 @@
     const baseURL = 'https://www.appsheet.com/start/b8068f50-015e-43ae-9393-2cdd8e85504f';
     iframe.src = view ? `${baseURL}#view=${view}` : baseURL;
   }
+
+  window.onload = function() {
+    carregarAppSheet();
+  };
 </script>
 
 </head>
@@ -160,6 +164,10 @@
       <h1>Sistema de Gestão Operacional</h1>
       <p>Corpo de Bombeiros Militar - Plataforma Interna</p>
       <nav>
+        <div class="menu">
+          <a onclick="carregarAppSheet()">Início</a>
+        </div>
+
         <div class="menu">
           <a>Viaturas</a>
           <div class="submenu">
@@ -190,19 +198,17 @@
         <div class="menu">
           <a onclick="carregarAppSheet('Noticias')">Notícias</a>
         </div>
-        
 
         <div class="menu">
           <a onclick="carregarAppSheet('DiarioCmdo')">Diário Cmt</a>
         </div>
 
-<div class="menu">
-  <a href="https://www.appsheet.com/start/b8068f50-015e-43ae-9393-2cdd8e85504f" target="_blank">Gestão Logística</a>
-  <div class="submenu">
-    <a href="https://www.appsheet.com/start/b8068f50-015e-43ae-9393-2cdd8e85504f#view=Dashboard" target="_blank">Dashboard</a>
-  </div>
-</div>
-
+        <div class="menu">
+          <a href="https://www.appsheet.com/start/b8068f50-015e-43ae-9393-2cdd8e85504f" target="_blank">Gestão Logística</a>
+          <div class="submenu">
+            <a href="https://www.appsheet.com/start/b8068f50-015e-43ae-9393-2cdd8e85504f#view=Dashboard" target="_blank">Dashboard</a>
+          </div>
+        </div>
 
       </nav>
     </header>
