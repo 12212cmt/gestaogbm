@@ -3,119 +3,119 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CBMSC - Palma Sola | Gestão BM</title>
-  <style>
-    :root {
-      --verde: #43A047;
-      --dourado: #134787;
-      --fundo: #f2f2f2;
-      --sombra: rgba(0, 0, 0, 0.25);
-    }
+  <title>CBMSC - Palma Sola</title>
+ <style>
+  :root {
+    --verde: #43A047;
+    --dourado: #134787;
+    --fundo: #f2f2f2;
+    --sombra: rgba(0, 0, 0, 0.25);
+  }
 
-    body {
-      margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background-color: var(--fundo);
-      color: #333;
-    }
+  body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background-color: var(--fundo);
+    color: #333;
+  }
 
-    .container {
-      width: 100%;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
+  .container {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
 
-    header {
-      background-color: var(--verde);
-      box-shadow: 0 4px 12px var(--sombra);
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
+  header {
+    background-color: var(--verde);
+    box-shadow: 0 4px 12px var(--sombra);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
 
-    header::before {
-      content: "";
-      display: block;
-      height: 6px;
-      background-color: var(--dourado);
-    }
+  header::before {
+    content: "";
+    display: block;
+    height: 4px; /* mais fino ainda */
+    background-color: var(--dourado);
+  }
 
+  .header-content {
+    display: flex;
+    align-items: center;
+    padding: 6px 12px; /* menor altura */
+  }
+
+  .logo {
+    width: 40px;  /* reduzido de 60px */
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px var(--sombra);
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  .logo:hover {
+    transform: scale(1.05);
+  }
+
+  .titulo {
+    margin-left: 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+
+  .titulo h1 {
+    font-size: 18px; /* menor */
+    margin: 0;
+    font-weight: bold;
+  }
+
+  .titulo span {
+    font-size: 12px;
+    opacity: 0.9;
+  }
+
+  @media (max-width: 600px) {
     .header-content {
-      display: flex;
-      align-items: center;
-      padding: 12px 20px;
+      justify-content: center;
+      padding: 6px;
     }
 
     .logo {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      box-shadow: 0 2px 4px var(--sombra);
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-
-    .logo:hover {
-      transform: scale(1.05);
+      display: none;
     }
 
     .titulo {
-      margin-left: 15px;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      line-height: 1.2;
+      margin-left: 0;
+      text-align: center;
     }
 
     .titulo h1 {
-      font-size: 22px;
-      margin: 0;
-      font-weight: bold;
+      font-size: 16px;
     }
 
     .titulo span {
-      font-size: 14px;
-      opacity: 0.9;
+      font-size: 11px;
     }
+  }
 
-    @media (max-width: 600px) {
-      .header-content {
-        justify-content: center;
-        padding: 10px;
-      }
+  main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
 
-      .logo {
-        display: none;
-      }
-
-      .titulo {
-        margin-left: 0;
-        text-align: center;
-      }
-
-      .titulo h1 {
-        font-size: 18px;
-      }
-
-      .titulo span {
-        font-size: 12px;
-      }
-    }
-
-    main {
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    iframe {
-      flex-grow: 1;
-      border: none;
-      width: 100%;
-    }
-  </style>
+  iframe {
+    flex-grow: 1;
+    border: none;
+    width: 100%;
+  }
+</style>
 
   <script>
     function carregarAppSheet(view = '') {
@@ -139,8 +139,8 @@
           onclick="carregarAppSheet()" />
 
         <div class="titulo">
-          <h1>CBMSC</h1>
-          <span>Palma Sola - Gestão BM</span>
+          <h1>CBMSC - Palma Sola</h1>
+          <span>Cmt Sgt Rodrigues</span>
         </div>
       </div>
     </header>
