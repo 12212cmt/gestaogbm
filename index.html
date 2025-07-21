@@ -81,7 +81,6 @@
       opacity: 0.9;
     }
 
-    /* Cabeçalho adaptável */
     @media (max-width: 600px) {
       .header-content {
         justify-content: center;
@@ -106,29 +105,19 @@
       }
     }
 
-main {
-  flex-grow: 1;              /* Ocupar o espaço restante entre cabeçalho e rodapé */
-  display: flex;             /* Ativa layout flexível na direção vertical */
-  flex-direction: column;    /* Organiza os elementos internos em coluna (vertical) */
-}
-
-iframe {
-  flex-grow: 1;              /* Faz o iframe ocupar todo o espaço disponível do main */
-  border: none;              /* Remove bordas padrão do navegador */
-  width: 100%;               /* Ocupa toda a largura possível */
-}
-
-
-    footer {
-      margin-top: 20px;
-      background-color: #eee;
-      text-align: center;
-      padding: 15px 10px;
-      font-size: 13px;
-      color: #555;
-      border-top: 1px solid #ccc;
-      border-radius: 6px 6px 0 0;
+    main {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
     }
+
+    iframe {
+      flex-grow: 1;
+      border: none;
+      width: 100%;
+    }
+
+    /* Rodapé removido */
   </style>
 
   <script>
@@ -163,11 +152,7 @@ iframe {
       <iframe id="appsheet-frame"></iframe>
     </main>
 
-    <footer>
-      © 2025 - Corpo de Bombeiros Militar de Santa Catarina - Palma Sola<br>
-      Sistema desenvolvido para uso institucional restrito.
-      <!-- Espaço para personalizações -->
-    </footer>
+    <!-- Rodapé removido -->
   </div>
 
 </body>
