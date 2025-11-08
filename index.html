@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CBMSC - Palma Sola</title>
- <style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CBMSC - Palma Sola | Gestão BM</title>
+<style>
   :root {
-    --verde: #43A047;
-    --dourado: #134787;
-    --fundo: #f2f2f2;
+    --vermelho: #B33E36; /* Vermelho Segurança */
+    --cinza: #C8C8C6;    /* Cinza Crômio */
+    --verde: #9BCB5A;    /* Verde Bandeira do Estado */
+    --fundo: #f5f5f5;
     --sombra: rgba(0, 0, 0, 0.25);
   }
 
@@ -19,16 +20,8 @@
     color: #333;
   }
 
-  .container {
-    width: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-
   header {
-    background-color: var(--verde);
+    background-color: var(--vermelho);
     box-shadow: 0 4px 12px var(--sombra);
     position: sticky;
     top: 0;
@@ -38,117 +31,209 @@
   header::before {
     content: "";
     display: block;
-    height: 4px; /* mais fino ainda */
-    background-color: var(--dourado);
+    height: 5px;
+    background-color: var(--verde);
   }
 
   .header-content {
     display: flex;
     align-items: center;
-    padding: 6px 12px; /* menor altura */
+    justify-content: center;
+    padding: 10px 16px;
   }
 
   .logo {
-    width: 40px;  /* reduzido de 60px */
-    height: 40px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
-    box-shadow: 0 2px 4px var(--sombra);
-    cursor: pointer;
-    transition: transform 0.2s;
-  }
-
-  .logo:hover {
-    transform: scale(1.05);
+    margin-right: 12px;
+    box-shadow: 0 2px 6px var(--sombra);
   }
 
   .titulo {
-    margin-left: 10px;
     color: white;
-    display: flex;
-    flex-direction: column;
     line-height: 1.2;
+    text-align: center;
   }
 
   .titulo h1 {
-    font-size: 18px; /* menor */
     margin: 0;
+    font-size: 20px;
     font-weight: bold;
   }
 
   .titulo span {
-    font-size: 12px;
+    font-size: 13px;
     opacity: 0.9;
   }
 
+  main {
+    padding: 20px;
+    flex-grow: 1;
+  }
+
+  .menu {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px var(--sombra);
+    overflow: hidden;
+    border: 1px solid var(--cinza);
+  }
+
+  .menu-section {
+    border-bottom: 1px solid #ddd;
+  }
+
+  .menu-header {
+    background: var(--vermelho);
+    color: white;
+    font-weight: bold;
+    padding: 14px 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s;
+  }
+
+  .menu-header:hover {
+    background: #982f28;
+  }
+
+  .submenu {
+    display: none;
+    flex-direction: column;
+    background: #fafafa;
+  }
+
+  .submenu a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.2s;
+  }
+
+  .submenu a:hover {
+    background: #f4f9ef;
+    border-left: 6px solid var(--verde);
+  }
+
+  .submenu a::after {
+    content: "↗";
+    font-size: 12px;
+    color: var(--verde);
+  }
+
+  .seta {
+    transition: transform 0.3s;
+  }
+
+  .aberto .seta {
+    transform: rotate(90deg);
+  }
+
+  footer {
+    text-align: center;
+    padding: 15px;
+    font-size: 13px;
+    color: #555;
+  }
+
   @media (max-width: 600px) {
-    .header-content {
-      justify-content: center;
-      padding: 6px;
-    }
-
-    .logo {
-      display: none;
-    }
-
-    .titulo {
-      margin-left: 0;
-      text-align: center;
+    .menu {
+      margin: 0 10px;
     }
 
     .titulo h1 {
-      font-size: 16px;
+      font-size: 18px;
     }
 
     .titulo span {
-      font-size: 11px;
+      font-size: 12px;
     }
-  }
-
-  main {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-  iframe {
-    flex-grow: 1;
-    border: none;
-    width: 100%;
   }
 </style>
-
-  <script>
-    function carregarAppSheet(view = '') {
-      const iframe = document.getElementById('appsheet-frame');
-      const base = 'https://www.appsheet.com/start/442e3e0a-0cdd-4c3f-8e4c-be8070d5d141';
-      iframe.src = view ? `${base}#view=${view}` : base;
-    }
-
-    window.onload = carregarAppSheet;
-  </script>
 </head>
 <body>
+  <header>
+    <div class="header-content">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Corpo_de_Bombeiros_Militar_de_Santa_Catarina_%28CBMSC%29.png" alt="Logo CBMSC" class="logo">
+      <div class="titulo">
+        <h1>CBMSC - Palma Sola</h1>
+        <span>Gestão BM | Cmt Sgt Rodrigues</span>
+      </div>
+    </div>
+  </header>
 
-  <div class="container">
-    <header>
-      <div class="header-content">
-        <img
-          src="https://tse4.mm.bing.net/th/id/OIP.Rp3y-BbQkb6zGczSSYhfXAHaHa?rs=1&pid=ImgDetMain&o=7&rm=3"
-          alt="Logo CBM"
-          class="logo"
-          onclick="carregarAppSheet()" />
+  <main>
+    <div class="menu">
 
-        <div class="titulo">
-          <h1>CBMSC - Palma Sola</h1>
-          <span>Cmt Sgt Rodrigues</span>
+      <!-- COMANDO -->
+      <div class="menu-section">
+        <div class="menu-header" onclick="toggleMenu(this)">
+          COMANDO <span class="seta">▶</span>
+        </div>
+        <div class="submenu">
+          <a href="#" target="_blank">Cadastros</a>
+          <a href="#" target="_blank">Controle Almoxarifado</a>
+          <a href="#" target="_blank">Controle Estoque APH</a>
+          <a href="#" target="_blank">Controle Agenda</a>
         </div>
       </div>
-    </header>
 
-    <main>
-      <iframe id="appsheet-frame"></iframe>
-    </main>
-  </div>
+      <!-- BOMBEIRO MILITAR -->
+      <div class="menu-section">
+        <div class="menu-header" onclick="toggleMenu(this)">
+          BOMBEIRO MILITAR <span class="seta">▶</span>
+        </div>
+        <div class="submenu">
+          <a href="#" target="_blank">Agenda Diária</a>
+          <a href="#" target="_blank">Conferência Almoxarifado</a>
+          <a href="#" target="_blank">Conferência Estoque APH</a>
+          <a href="#" target="_blank">Registros Gerais</a>
+        </div>
+      </div>
 
+      <!-- BOMBEIRO COMUNITÁRIO -->
+      <div class="menu-section">
+        <div class="menu-header" onclick="toggleMenu(this)">
+          BOMBEIRO COMUNITÁRIO <span class="seta">▶</span>
+        </div>
+        <div class="submenu">
+          <a href="#" target="_blank">Registro Entrada</a>
+          <a href="#" target="_blank">Registro Saída</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    © 2025 CBMSC - Palma Sola | Desenvolvido para Gestão Interna
+  </footer>
+
+  <script>
+    function toggleMenu(header) {
+      const section = header.parentElement;
+      const submenu = section.querySelector(".submenu");
+      const aberto = section.classList.contains("aberto");
+
+      document.querySelectorAll(".menu-section").forEach(s => {
+        s.classList.remove("aberto");
+        s.querySelector(".submenu").style.display = "none";
+      });
+
+      if (!aberto) {
+        section.classList.add("aberto");
+        submenu.style.display = "flex";
+      }
+    }
+  </script>
 </body>
 </html>
