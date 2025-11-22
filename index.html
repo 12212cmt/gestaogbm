@@ -1,236 +1,53 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CBMSC - Palma Sola | Gestão BM</title>
-<style>
-  :root {
-    --vermelho: #B33E36; /* Vermelho Segurança */
-    --cinza: #C8C8C6;    /* Cinza Crômio */
-    --verde: #9BCB5A;    /* Verde Bandeira do Estado */
-    --fundo: #f5f5f5;
-    --sombra: rgba(0, 0, 0, 0.25);
-  }
-
-  body {
-    margin: 0;
-    font-family: "Segoe UI", sans-serif;
-    background-color: var(--fundo);
-    color: #333;
-  }
-
-  header {
-    background-color: var(--vermelho);
-    box-shadow: 0 4px 12px var(--sombra);
-    position: sticky;
-    top: 0;
-    z-index: 999;
-  }
-
-  header::before {
-    content: "";
-    display: block;
-    height: 5px;
-    background-color: var(--verde);
-  }
-
-  .header-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 16px;
-  }
-
-  .logo {
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    margin-right: 12px;
-    box-shadow: 0 2px 6px var(--sombra);
-  }
-
-  .titulo {
-    color: white;
-    line-height: 1.2;
-    text-align: center;
-  }
-
-  .titulo h1 {
-    margin: 0;
-    font-size: 20px;
-    font-weight: bold;
-  }
-
-  .titulo span {
-    font-size: 13px;
-    opacity: 0.9;
-  }
-
-  main {
-    padding: 20px;
-    flex-grow: 1;
-  }
-
-  .menu {
-    max-width: 600px;
-    margin: 0 auto;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px var(--sombra);
-    overflow: hidden;
-    border: 1px solid var(--cinza);
-  }
-
-  .menu-section {
-    border-bottom: 1px solid #ddd;
-  }
-
-  .menu-header {
-    background: var(--vermelho);
-    color: white;
-    font-weight: bold;
-    padding: 14px 16px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background 0.3s;
-  }
-
-  .menu-header:hover {
-    background: #982f28;
-  }
-
-  .submenu {
-    display: none;
-    flex-direction: column;
-    background: #fafafa;
-  }
-
-  .submenu a {
-    text-decoration: none;
-    color: #333;
-    padding: 10px 20px;
-    border-top: 1px solid #eee;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: background 0.2s;
-  }
-
-  .submenu a:hover {
-    background: #f4f9ef;
-    border-left: 6px solid var(--verde);
-  }
-
-  .submenu a::after {
-    content: "↗";
-    font-size: 12px;
-    color: var(--verde);
-  }
-
-  .seta {
-    transition: transform 0.3s;
-  }
-
-  .aberto .seta {
-    transform: rotate(90deg);
-  }
-
-  footer {
-    text-align: center;
-    padding: 15px;
-    font-size: 13px;
-    color: #555;
-  }
-
-  @media (max-width: 600px) {
-    .menu {
-      margin: 0 10px;
-    }
-
-    .titulo h1 {
-      font-size: 18px;
-    }
-
-    .titulo span {
-      font-size: 12px;
-    }
-  }
-</style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Escala - Gestor</title>
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <div class="header-content">
-     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVWgy1yqrRnnUVVISTzSB74Vlf3Bbty1gxRA&s" alt="Logo CBMSC" class="logo">
-      <div class="titulo">
-        <h1>CBMSC - Palma Sola</h1>
-        <span>Gestão BM | Cmt Sgt Rodrigues</span>
+  <div id="root" class="container">
+    <div id="authView" class="card">
+      <h2>Entrar / Registrar</h2>
+      <input id="warname" placeholder="Nome de guerra" />
+      <input id="password" type="password" placeholder="Senha" />
+      <div class="row">
+        <button id="btnLogin">Entrar</button>
+        <button id="btnRegister">Registrar</button>
+      </div>
+      <p class="muted">Login com nome de guerra. Caso registre, informe nome completo e CPF no próximo passo.</p>
+      <div id="registerExtra" style="display:none">
+        <input id="fullName" placeholder="Nome completo" />
+        <input id="cpf" placeholder="CPF (somente números )" />
+        <button id="btnFinishRegister">Finalizar registro</button>
       </div>
     </div>
-  </header>
 
-  <main>
-    <div class="menu">
-
-      <!-- COMANDO -->
-      <div class="menu-section">
-        <div class="menu-header" onclick="toggleMenu(this)">
-          COMANDO <span class="seta">▶</span>
-        </div>
-        <div class="submenu">
-          <a href="https://www.appsheet.com/start/442e3e0a-0cdd-4c3f-8e4c-be8070d5d141"_blank">Logística</a>
-          <a href="https://www.appsheet.com/start/b8068f50-015e-43ae-9393-2cdd8e85504f#appName=GesLog2025-380962185-25-01-22-2&page=dashboard&table=Contratos+e+Atas&view=Dashboard"_blank">GesLog</a>
-          <a href="https://www.appsheet.com/start/a70a8788-54cf-414c-8689-7264d40d579d">Controle Estoque APH</a>
+    <div id="appView" style="display:none" class="card">
+      <div class="topbar">
+        <div><b id="whoDisplay"></b> (<span id="roleDisplay"></span>)</div>
+        <div>
+          <button id="btnLogout">Logout</button>
         </div>
       </div>
 
-      <!-- BOMBEIRO MILITAR -->
-      <div class="menu-section">
-        <div class="menu-header" onclick="toggleMenu(this)">
-          BOMBEIRO MILITAR <span class="seta">▶</span>
-        </div>
-        <div class="submenu">
-          <a href="https://www.appsheet.com/start/a70a8788-54cf-414c-8689-7264d40d579d">Conferência Estoque APH</a>
-        </div>
+      <div class="adminbar" id="adminControls" style="display:none">
+        <button id="btnCreateMonth">Criar mês</button>
+        <select id="monthsSelect"></select>
+        <button id="btnToggleActive">Ativar/Desativar</button>
+        <button id="btnToggleLock">Bloquear/Desbloquear</button>
+        <button id="btnExport">Export CSV</button>
       </div>
 
-      <!-- BOMBEIRO COMUNITÁRIO -->
-      <div class="menu-section">
-        <div class="menu-header" onclick="toggleMenu(this)">
-          BOMBEIRO COMUNITÁRIO <span class="seta">▶</span>
-        </div>
-        <div class="submenu">
-          <a href="https://www.appsheet.com/start/2d58a60c-b948-4dd6-97c6-46e652b52cc9">Registro Entrada</a>
-        </div>
-      </div>
-
+      <div id="statusBox"></div>
+      <div id="gridContainer"></div>
+      <div class="legend">Legendas: I = Integral (D+N). Até N pessoas por turno (configurável).</div>
     </div>
-  </main>
+  </div>
 
-  <footer>
-    © 2025 CBMSC - Palma Sola | Desenvolvido para Gestão Interna
-  </footer>
-
-  <script>
-    function toggleMenu(header) {
-      const section = header.parentElement;
-      const submenu = section.querySelector(".submenu");
-      const aberto = section.classList.contains("aberto");
-
-      document.querySelectorAll(".menu-section").forEach(s => {
-        s.classList.remove("aberto");
-        s.querySelector(".submenu").style.display = "none";
-      });
-
-      if (!aberto) {
-        section.classList.add("aberto");
-        submenu.style.display = "flex";
-      }
-    }
-  </script>
+  <!-- Scripts no final do body -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/supabase.min.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
-
-
